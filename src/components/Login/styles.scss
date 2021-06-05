@@ -1,0 +1,29 @@
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top:100px;
+    
+    .login-form {
+        width: 400px;
+        max-width: 400px;
+    }
+    .form-title{
+        margin:15px 0;
+    }
+    .login-form-forgot {
+        float: right;
+    }
+    .login-form-button {
+        width: 100%;
+    }
+    .form-footer{
+        display: flex;
+        margin-top: 8px;
+        justify-content: center;
+    }
+    .ant-col .ant-form-item-control :not(:last-child){
+        margin-bottom: 5px;
+    }
+}

@@ -1,0 +1,96 @@
+import React , { useState }from "react";
+import { Flex, Text, Box, Button,useColorMode } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
+import './styles.scss';
+
+type userData = {
+  user: any,
+  currentUser: any
+}
+const Navbar = (): JSX.Element =>  {
+  const { colorMode, toggleColorMode } = useColorMode();
+  
+  const [userData, setUserData] = useState<userData>({
+     user: null,
+      currentUser: localStorage.getItem('name') || null 
+  });
+
+  return (
+    <Flex
+      w="100%"
+      h={50}
+      justify="space-between"
+      align="center"
+      px={8}
+      py={4}
+      borderBottomWidth="1px"
+    >
+      <Box flex={1}>
+        <Text fontWeight="bold">Fastle</Text>
+      </Box>
+      <Flex flex={1} justify="flex-end">
+         <div className="link">
+            <Link to={"/"} >
+                Accueil
+            </Link>
+        </div> 
+        <div className="link">
+          <Link to={"/planning-poker"} >
+            planning poker
+          </Link>
+        </div> 
+         <div className="link">    
+            <Link to={"/chat"} >
+              Chat
+            </Link>
+        </div> 
+          <div className="link">    
+            <Link to={"/todo-list"} >
+              Todo list
+            </Link>
+        </div> 
+         <div className="link">    
+            <Link to={"/chat"} >
+              Contact
+            </Link>
+        </div>
+        { userData.currentUser ? (
+            <Flex flex={1} justify="flex-start">
+              <div className="link">
+                  <Link to={"/profile"}>
+                    {userData.currentUser}
+                  </Link>
+                </div>
+                <div className="link">
+                    <Link to={"/login"}>
+                    Se deconnecter
+                   </Link>
+                </div>
+             </Flex>
+
+          ) : (
+       <Flex justify="flex-start">
+         <div className="link">
+            <Link to={"/login"}>
+               Se connecter
+            </Link>
+         </div>
+
+         <div className="link">
+            <Link to={"/register"} >
+               Créer un compte
+            </Link>
+         </div>
+       </Flex>
+          )
+        }
+        <div className="link-1">  
+          <Button size="sm" onClick={toggleColorMode} variant="ghost">
+            {colorMode === "light" ? "Dark Mode" : "Light Mode"} 
+          </Button>
+        </div> 
+      </Flex> </Flex>
+  );
+}
+
+export default Navbar;

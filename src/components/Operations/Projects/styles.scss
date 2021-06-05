@@ -1,0 +1,17 @@
+.add-project-container{
+    margin-top:100px;
+    .add-project-container,.empty-project{
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+        align-items: center;
+    }   
+}
+.login-form-button{
+    display: block;
+    width: 100%;
+}
+.create-project-title{
+    width: 100%;
+    text-align:center;
+}
